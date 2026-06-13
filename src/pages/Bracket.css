@@ -1,0 +1,105 @@
+.bracket-container {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 3rem;
+  padding: 2rem 0;
+  width: 100%;
+}
+
+.bracket-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 2rem;
+}
+
+.bracket-match-box {
+  background: var(--bg-secondary);
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  width: 250px;
+  padding: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  position: relative;
+  z-index: 2;
+}
+
+.bracket-match-box.finished {
+  border-color: rgba(0, 255, 136, 0.3);
+}
+
+.bracket-match-box.empty {
+  opacity: 0.5;
+}
+
+.bracket-title {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  text-align: center;
+  margin-bottom: 0.5rem;
+  letter-spacing: 1px;
+}
+
+.bracket-team {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+  background: rgba(255,255,255,0.03);
+  margin-bottom: 0.2rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.bracket-team.winner {
+  background: rgba(0, 255, 136, 0.1);
+  color: var(--accent-primary);
+  font-weight: bold;
+}
+
+.bracket-score {
+  font-family: monospace;
+  font-weight: bold;
+}
+
+/* Connectors */
+.bracket-connector {
+  position: relative;
+}
+
+.bracket-connector.right::after {
+  content: '';
+  position: absolute;
+  right: -1.5rem;
+  width: 1.5rem;
+  border-top: 2px solid var(--accent-secondary);
+  top: 50%;
+}
+
+.bracket-connector.right.top::before {
+  content: '';
+  position: absolute;
+  right: -1.5rem;
+  height: calc(50% + 1rem); /* Half gap */
+  border-right: 2px solid var(--accent-secondary);
+  top: 50%;
+}
+
+.bracket-connector.right.bottom::before {
+  content: '';
+  position: absolute;
+  right: -1.5rem;
+  height: calc(50% + 1rem);
+  border-right: 2px solid var(--accent-secondary);
+  bottom: 50%;
+}
+
+.bracket-connector.left::before {
+  content: '';
+  position: absolute;
+  left: -1.5rem;
+  width: 1.5rem;
+  border-top: 2px solid var(--accent-secondary);
+  top: 50%;
+}
