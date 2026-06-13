@@ -3,7 +3,7 @@ import { useTournament } from '../context/TournamentContext';
 import { LogOut } from 'lucide-react';
 
 const Header = ({ title }) => {
-  const { selectTournament } = useTournament();
+  const { setActiveTournamentId } = useTournament();
 
   return (
     <header className="app-header" style={{
@@ -17,7 +17,7 @@ const Header = ({ title }) => {
       justifyContent: 'center'
     }}>
       <button 
-        onClick={() => selectTournament(null)}
+        onClick={() => setActiveTournamentId(null)}
         style={{
           position: 'absolute',
           left: '1.5rem',
