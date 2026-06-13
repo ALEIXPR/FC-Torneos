@@ -86,16 +86,9 @@ function AppContent() {
       <Routes>
         <Route path="/tv" element={!activeTournamentId ? <Lobby /> : <TV />} />
         <Route path="/admin" element={<Admin />} />
-        <Route 
-          path="/instrucciones" 
-          element={
-            !activeTournamentId ? (
-              <InstructionsStandalone />
-            ) : (
-              <TournamentLayout />
-            )
-          } 
-        />
+        {!activeTournamentId && (
+          <Route path="/instrucciones" element={<InstructionsStandalone />} />
+        )}
         <Route path="/*" element={!activeTournamentId ? <Lobby /> : <TournamentLayout />} />
       </Routes>
       <Toaster position="top-center" toastOptions={{ style: { background: '#141b2d', color: '#fff', border: '1px solid rgba(255,255,255,0.1)' } }} />

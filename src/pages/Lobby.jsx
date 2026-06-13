@@ -2,12 +2,13 @@ import React from 'react';
 import { useTournament } from '../context/TournamentContext';
 import { motion } from 'framer-motion';
 import { Trophy, ChevronRight, Settings } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import './Lobby.css';
 
 const Lobby = () => {
   const { tournaments, setActiveTournamentId } = useTournament();
   const navigate = useNavigate();
+  const location = useLocation();
 
   return (
     <div className="lobby-container">
@@ -42,7 +43,11 @@ const Lobby = () => {
               key={t.id}
               onClick={() => {
                 setActiveTournamentId(t.id);
-                navigate('/');
+                if (location.pathname === '/tv') {
+                  navigate('/tv');
+                } else {
+                  navigate('/');
+                }
               }}
               className="tournament-card"
             >
