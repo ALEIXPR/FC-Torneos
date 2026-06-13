@@ -84,7 +84,7 @@ const Lobby = () => {
             <button 
               className="btn-primary" 
               onClick={() => setShowCreate(true)}
-              style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', background: 'transparent', border: '1px solid var(--accent-secondary)' }}
+              style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', background: 'transparent', border: '1px solid var(--accent-secondary)', color: 'var(--text-primary)' }}
             >
               <PlusCircle size={20} />
               Administrar Nuevo Torneo
