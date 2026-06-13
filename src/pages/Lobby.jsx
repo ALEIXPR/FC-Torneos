@@ -1,30 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useTournament } from '../context/TournamentContext';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Trophy, ChevronRight, PlusCircle, Lock } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Trophy, ChevronRight, Settings } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import toast from 'react-hot-toast';
 import './Lobby.css';
 
 const Lobby = () => {
-  const { tournaments, setActiveTournamentId, createTournament } = useTournament();
+  const { tournaments, setActiveTournamentId } = useTournament();
   const navigate = useNavigate();
-  const [showCreate, setShowCreate] = useState(false);
-  const [adminPassword, setAdminPassword] = useState('');
-
-  const handleCreateSubmit = (e) => {
-    e.preventDefault();
-    if (adminPassword === 'lider') {
-      toast.success('Acceso Autorizado');
-      navigate('/admin');
-    } else {
-      toast.error('Contraseña incorrecta');
-    }
-  };
 
   return (
     <div className="lobby-container">
-      {/* Background Image Layer */}
       <div className="lobby-bg"></div>
 
       <div className="lobby-content">
@@ -35,7 +21,7 @@ const Lobby = () => {
         >
           <Trophy color="var(--accent-primary)" size={64} style={{ filter: 'drop-shadow(0 0 20px rgba(0, 255, 136, 0.4))' }} />
           <h1>FC SIXPISTOLS</h1>
-          <p>Plataforma Oficial de E-Sports & Competición</p>
+          <p>Plataforma Oficial de E-Sports &amp; Competición</p>
         </motion.div>
 
         <motion.div 
@@ -71,53 +57,21 @@ const Lobby = () => {
           ))}
         </motion.div>
 
-        {/* Create Tournament Section */}
+        {/* Admin button — goes straight to /admin which has its own auth */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
           className="create-tournament-section"
         >
-          {!showCreate ? (
-            <button 
-              className="btn-primary" 
-              onClick={() => setShowCreate(true)}
-              style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', background: 'transparent', border: '1px solid var(--accent-secondary)', color: 'var(--text-primary)' }}
-            >
-              <PlusCircle size={20} />
-              Panel de Administración
-            </button>
-          ) : (
-            <AnimatePresence>
-              <motion.form 
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: 'auto' }}
-                exit={{ opacity: 0, height: 0 }}
-                onSubmit={handleCreateSubmit}
-              >
-                <h3 style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}>
-                  <Lock size={18} color="var(--accent-secondary)" />
-                  Acceso de Administrador
-                </h3>
-                <input
-                  type="password"
-                  placeholder="Contraseña de Admin..."
-                  value={adminPassword}
-                  onChange={(e) => setAdminPassword(e.target.value)}
-                  className="password-input"
-                  autoFocus
-                />
-                <div style={{ display: 'flex', gap: '1rem' }}>
-                  <button type="button" className="btn-secondary" style={{ flex: 1 }} onClick={() => setShowCreate(false)}>
-                    Cancelar
-                  </button>
-                  <button type="submit" className="btn-primary" style={{ flex: 1 }}>
-                    Entrar
-                  </button>
-                </div>
-              </motion.form>
-            </AnimatePresence>
-          )}
+          <button 
+            className="btn-primary" 
+            onClick={() => navigate('/admin')}
+            style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', background: 'transparent', border: '1px solid var(--accent-secondary)', color: 'var(--text-primary)' }}
+          >
+            <Settings size={20} />
+            Panel de Administración
+          </button>
         </motion.div>
       </div>
     </div>
