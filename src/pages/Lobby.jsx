@@ -15,9 +15,7 @@ const Lobby = () => {
   const handleCreateSubmit = (e) => {
     e.preventDefault();
     if (adminPassword === 'lider') {
-      const name = `Torneo ${new Date().toLocaleDateString()}`;
-      createTournament(name);
-      toast.success('Torneo creado exitosamente. Configura los participantes.');
+      toast.success('Acceso Autorizado');
       navigate('/admin');
     } else {
       toast.error('Contraseña incorrecta');
@@ -87,7 +85,7 @@ const Lobby = () => {
               style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', background: 'transparent', border: '1px solid var(--accent-secondary)', color: 'var(--text-primary)' }}
             >
               <PlusCircle size={20} />
-              Administrar Nuevo Torneo
+              Panel de Administración
             </button>
           ) : (
             <AnimatePresence>
@@ -114,7 +112,7 @@ const Lobby = () => {
                     Cancelar
                   </button>
                   <button type="submit" className="btn-primary" style={{ flex: 1 }}>
-                    Entrar y Crear
+                    Entrar
                   </button>
                 </div>
               </motion.form>
