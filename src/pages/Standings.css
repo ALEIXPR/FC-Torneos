@@ -1,77 +1,267 @@
+/* ===================================================
+   Standings – Mobile-first, dark glass theme
+   =================================================== */
+
+/* Page wrapper */
+.standings-page {
+  padding-bottom: 5rem;
+}
+
+/* ---- Header ---- */
+.standings-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.standings-title {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 900;
+  font-size: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ---- Group tabs (pill buttons) ---- */
+.group-tabs {
+  display: flex;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 4px;
+  border-radius: 100px;
+  border: 1px solid var(--glass-border);
+}
+
+.group-tab {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.45rem 1.15rem;
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  color: var(--text-secondary);
+  transition: all 0.25s ease;
+}
+
+.group-tab:hover {
+  color: var(--text-primary);
+}
+
+.group-tab.active {
+  background: var(--accent-primary);
+  color: var(--text-inverse, #050810);
+  box-shadow: 0 0 14px rgba(0, 255, 136, 0.35);
+}
+
+/* ---- Card wrapper ---- */
 .standings-card {
-  padding: 0;
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  box-shadow: var(--glass-shadow);
   overflow: hidden;
 }
 
-.table-responsive {
-  width: 100%;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
-.standings-table {
-  width: 100%;
-  min-width: 600px; /* Forces scroll on mobile */
-  border-collapse: collapse;
-  text-align: center;
-  font-size: 0.85rem;
-}
-
-.standings-table th {
-  color: var(--text-secondary);
-  font-weight: 600;
-  padding: 0.5rem;
-  border-bottom: 1px solid var(--glass-border);
-}
-
-.standings-table td {
-  padding: 0.8rem 0.5rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.02);
-}
-
-.standings-table tr:last-child td {
-  border-bottom: none;
-}
-
-.standings-table tbody tr {
+/* ---- Row grid ---- */
+.standings-row {
+  display: grid;
+  grid-template-columns: 2rem 1fr repeat(4, 1.6rem) 2.2rem;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.7rem 0.8rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
   transition: background 0.2s;
 }
 
-.standings-table tbody tr:hover {
-  background: rgba(255, 255, 255, 0.05);
+.standings-row:last-child {
+  border-bottom: none;
 }
 
-.qualified td {
-  background: linear-gradient(90deg, rgba(0, 255, 136, 0.05) 0%, transparent 100%);
+.standings-row:not(.standings-row--header):hover {
+  background: rgba(255, 255, 255, 0.04);
 }
 
-.qualified td:first-child {
-  color: var(--accent-primary);
-  font-weight: bold;
-}
-
-.text-left {
-  text-align: left;
-}
-
-.team-info {
-  display: flex;
-  flex-direction: column;
-}
-
-.team-name-table {
-  font-family: 'Outfit', sans-serif;
-  font-weight: 700;
-  color: var(--text-primary);
-}
-
-.player-name-table {
+/* Header row */
+.standings-row--header {
+  padding: 0.55rem 0.8rem;
+  color: var(--text-secondary);
   font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+/* Qualified row – green left bar */
+.standings-row--qualified {
+  border-left: 3px solid var(--accent-primary);
+  background: linear-gradient(90deg, rgba(0, 255, 136, 0.06) 0%, transparent 60%);
+}
+
+/* ---- Columns ---- */
+.col-pos {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  font-size: 0.9rem;
+  text-align: center;
   color: var(--text-secondary);
 }
 
-.points {
-  font-weight: bold;
-  color: var(--text-primary);
+.col-pos--qualified {
+  color: var(--accent-primary);
+}
+
+.col-team {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.team-name {
   font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.player-name {
+  font-size: 0.65rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.col-stat {
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.col-pts {
+  text-align: center;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 900;
+  font-size: 1.05rem;
+  color: var(--accent-primary);
+}
+
+/* ---- Extra columns (GF, GC, DG) ---- */
+.col-extra {
+  display: none;   /* hidden by default (mobile-first) */
+}
+
+/* ===================================================
+   Responsive: wide mobile / tablets (>=480px)
+   =================================================== */
+@media (min-width: 480px) {
+  .col-extra {
+    display: block;
+  }
+
+  .standings-row {
+    /* Pos  Team   PJ G E P  GF GC DG   Pts */
+    grid-template-columns: 2.2rem 1fr repeat(7, 2rem) 2.8rem;
+    gap: 0.25rem;
+    padding: 0.75rem 1rem;
+  }
+
+  .standings-title {
+    font-size: 2.5rem;
+  }
+
+  .col-stat {
+    font-size: 0.85rem;
+  }
+
+  .col-pts {
+    font-size: 1.15rem;
+  }
+
+  .team-name {
+    font-size: 0.9rem;
+  }
+}
+
+/* ===================================================
+   Responsive: small mobile (<380px)
+   =================================================== */
+@media (max-width: 379px) {
+  .standings-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .standings-title {
+    font-size: 1.5rem;
+  }
+
+  .standings-row {
+    grid-template-columns: 1.6rem 1fr repeat(4, 1.3rem) 1.8rem;
+    gap: 0.2rem;
+    padding: 0.6rem 0.5rem;
+  }
+
+  .col-stat,
+  .standings-row--header .col-stat {
+    font-size: 0.7rem;
+  }
+
+  .col-pos {
+    font-size: 0.75rem;
+  }
+
+  .col-pts {
+    font-size: 0.9rem;
+  }
+
+  .team-name {
+    font-size: 0.75rem;
+  }
+
+  .player-name {
+    font-size: 0.6rem;
+  }
+
+  .group-tab {
+    font-size: 0.7rem;
+    padding: 0.4rem 0.9rem;
+  }
+}
+
+/* ===================================================
+   Responsive: default mobile (380-479px)
+   =================================================== */
+@media (min-width: 380px) and (max-width: 479px) {
+  .standings-row {
+    grid-template-columns: 1.8rem 1fr repeat(4, 1.4rem) 2rem;
+    gap: 0.25rem;
+    padding: 0.65rem 0.65rem;
+  }
+
+  .col-stat {
+    font-size: 0.75rem;
+  }
+
+  .team-name {
+    font-size: 0.8rem;
+  }
 }
