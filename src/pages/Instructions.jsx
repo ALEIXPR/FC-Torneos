@@ -15,7 +15,8 @@ import {
   Settings, 
   FileText, 
   Zap,
-  Star
+  Star,
+  LayoutGrid
 } from 'lucide-react';
 import './Instructions.css';
 
@@ -156,9 +157,11 @@ const Instructions = () => {
               
               <div className="help-steps">
                 <div className="help-step-item">
-                  <div className="help-step-num help-step-num-player">Partidos</div>
+                  <div className="help-step-num help-step-num-player">
+                    <Trophy size={14} />
+                  </div>
                   <div className="help-step-content">
-                    <h4 className="help-step-title">Calendario y Resultados 📅</h4>
+                    <h4 className="help-step-title">Partidos (Calendario y Resultados) 📅</h4>
                     <p className="help-step-desc">
                       Consulta los cruces por jornadas. Los marcadores finalizados se actualizan al instante y muestran los autores de los goles de forma detallada. También incluye la pestaña <strong>⚽ Pichichi</strong>, que extrae todos los goleadores y los ordena de mayor a menor con medallas (🥇, 🥈, 🥉) para el Top 3.
                     </p>
@@ -166,9 +169,11 @@ const Instructions = () => {
                 </div>
 
                 <div className="help-step-item">
-                  <div className="help-step-num help-step-num-player">Grupos</div>
+                  <div className="help-step-num help-step-num-player">
+                    <LayoutGrid size={14} />
+                  </div>
                   <div className="help-step-content">
-                    <h4 className="help-step-title">Tablas de Clasificación 📊</h4>
+                    <h4 className="help-step-title">Grupos (Tablas de Clasificación) 📊</h4>
                     <p className="help-step-desc">
                       Sigue la tabla de posiciones en vivo para los Grupos A y B. El sistema calcula automáticamente Puntos, Diferencia de Goles, Goles Favor y Goles Contra. En móvil se muestran las columnas clave y se destacan en color los puestos de clasificación directa.
                     </p>
@@ -176,9 +181,11 @@ const Instructions = () => {
                 </div>
 
                 <div className="help-step-item">
-                  <div className="help-step-num help-step-num-player">Cuadro</div>
+                  <div className="help-step-num help-step-num-player">
+                    <Shield size={14} />
+                  </div>
                   <div className="help-step-content">
-                    <h4 className="help-step-title">Fase Eliminatoria 🛡️</h4>
+                    <h4 className="help-step-title">Cuadro (Fase Eliminatoria) 🛡️</h4>
                     <p className="help-step-desc">
                       Muestra el árbol de Semifinales y Final. El bracket se desbloquea automáticamente en cuanto el administrador decide avanzar de fase al terminar los grupos.
                     </p>
@@ -186,9 +193,11 @@ const Instructions = () => {
                 </div>
 
                 <div className="help-step-item">
-                  <div className="help-step-num help-step-num-player">Perfiles</div>
+                  <div className="help-step-num help-step-num-player">
+                    <Users size={14} />
+                  </div>
                   <div className="help-step-content">
-                    <h4 className="help-step-title">Estadísticas y Rendimiento 👤</h4>
+                    <h4 className="help-step-title">Perfiles (Estadísticas) 👤</h4>
                     <p className="help-step-desc">
                       Accede a las fichas técnicas de los jugadores para analizar sus estilos de juego y estadísticas generales de rendimiento en el torneo actual.
                     </p>
