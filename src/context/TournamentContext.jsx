@@ -159,14 +159,12 @@ export const TournamentProvider = ({ children }) => {
     });
   };
 
-  const resetTournament = () => {
-    if(window.confirm("¿Estás seguro de borrar este torneo? No se puede deshacer.")) {
-      setAllPlayers(prev => prev.filter(p => p.tournamentId !== activeTournamentId));
-      setAllMatches(prev => prev.filter(m => m.tournamentId !== activeTournamentId));
-      setTournaments(prev => prev.map(t => 
-        t.id === activeTournamentId ? { ...t, status: 'setup' } : t
-      ));
-    }
+  const deleteTournament = (id) => {
+    if (id === 'demo1') return;
+    setAllPlayers(prev => prev.filter(p => p.tournamentId !== id));
+    setAllMatches(prev => prev.filter(m => m.tournamentId !== id));
+    setTournaments(prev => prev.filter(t => t.id !== id));
+    if (activeTournamentId === id) setActiveTournamentId(null);
   };
 
   const getStandings = (group) => {
@@ -191,7 +189,7 @@ export const TournamentProvider = ({ children }) => {
       advanceToKnockout,
       updateMatchResult,
       getStandings,
-      resetTournament
+      deleteTournament
     }}>
       {children}
     </TournamentContext.Provider>

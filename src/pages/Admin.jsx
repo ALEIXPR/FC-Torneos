@@ -24,7 +24,7 @@ const Admin = () => {
     startTournament, 
     advanceToKnockout,
     updateMatchResult,
-    resetTournament
+    deleteTournament
   } = useTournament();
 
   const [view, setView] = useState(activeTournamentId ? 'manage' : 'list');
@@ -171,18 +171,21 @@ const Admin = () => {
             >
               Ver Público
             </button>
-            <button 
-              onClick={() => {
-                resetTournament();
-                setActiveTournamentId(null);
-                setView('list');
-                toast.success('Torneo Eliminado');
-              }} 
-              className="btn-primary" 
-              style={{ background: '#ff4444', padding: '0.5rem 1rem', fontSize: '0.8rem' }}
-            >
-              Borrar
-            </button>
+            {activeTournament?.id !== 'demo1' && (
+              <button 
+                onClick={() => {
+                  if(window.confirm('¿Estás seguro de borrar este torneo por completo?')) {
+                    deleteTournament(activeTournamentId);
+                    setView('list');
+                    toast.success('Torneo Eliminado');
+                  }
+                }} 
+                className="btn-primary" 
+                style={{ background: '#ff4444', padding: '0.5rem 1rem', fontSize: '0.8rem' }}
+              >
+                Borrar
+              </button>
+            )}
           </div>
         </div>
 
