@@ -177,6 +177,7 @@ export const TournamentProvider = ({ children }) => {
 
   return (
     <TournamentContext.Provider value={{ 
+      tournaments,
       activeTournamentId, 
       setActiveTournamentId,
       activeTournament,
