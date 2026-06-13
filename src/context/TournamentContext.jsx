@@ -72,17 +72,7 @@ export const TournamentProvider = ({ children }) => {
   // Derived state for the active tournament
   const activeTournament = tournaments.find(t => t.id === activeTournamentId);
 
-  const createTournament = (name) => {
-    const newId = `t_${Date.now()}`;
-    const newTournament = {
-      id: newId,
-      name,
-      status: 'setup',
-      createdAt: new Date().toISOString()
-    };
-    setTournaments(prev => [...prev, newTournament]);
-    setActiveTournamentId(newId);
-  };
+
   const tournamentState = activeTournament ? activeTournament.status : null; // 'setup', 'groups', 'knockout'
   const players = allPlayers.filter(p => p.tournamentId === activeTournamentId);
   const matches = allMatches.filter(m => m.tournamentId === activeTournamentId);
