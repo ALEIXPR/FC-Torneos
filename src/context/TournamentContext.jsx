@@ -45,7 +45,7 @@ export const TournamentProvider = ({ children }) => {
     return saved ? JSON.parse(saved) : [DEMO_TOURNAMENT];
   });
 
-  const [activeTournamentId, setActiveTournamentId] = useState('demo1');
+  const [activeTournamentId, setActiveTournamentId] = useState(null);
 
   const [allPlayers, setAllPlayers] = useState(() => {
     const saved = localStorage.getItem('fc_players_v3');
