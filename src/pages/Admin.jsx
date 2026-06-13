@@ -9,14 +9,13 @@ const Admin = () => {
   const [password, setPassword] = useState('');
   
   // Dashboard states
-  const [view, setView] = useState('list'); // 'list' | 'manage'
   const [newTournamentName, setNewTournamentName] = useState('');
 
   const { 
     tournaments,
     activeTournament,
     activeTournamentId,
-    selectTournament,
+    setActiveTournamentId,
     createTournament,
     tournamentState, 
     players, 
@@ -39,15 +38,6 @@ const Admin = () => {
     }
   };
 
-  const handleCreate = (e) => {
-    e.preventDefault();
-    if(newTournamentName.trim() === '') return;
-    const newId = createTournament(newTournamentName);
-    setNewTournamentName('');
-    toast.success('Torneo creado exitosamente');
-    selectTournament(newId);
-    setView('manage');
-  };
 
   const handleAddPlayer = (e) => {
     e.preventDefault();
@@ -87,66 +77,10 @@ const Admin = () => {
     );
   }
 
-  // MASTER VIEW: TOURNAMENT LIST
-  if (view === 'list') {
-    return (
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="container" style={{ paddingBottom: '5rem' }}>
-        <h2 className="heading-lg" style={{ marginBottom: '2rem', color: 'var(--accent-primary)' }}>Mis Torneos</h2>
-        
-        <div className="card-glass" style={{ marginBottom: '2rem', background: 'rgba(0, 255, 136, 0.05)' }}>
-          <h3 className="heading-md" style={{ marginBottom: '1rem' }}>Crear Nuevo Torneo</h3>
-          <form onSubmit={handleCreate} style={{ display: 'flex', gap: '1rem' }}>
-            <input 
-              type="text" 
-              placeholder="Nombre del Torneo..." 
-              required 
-              className="glass-input"
-              value={newTournamentName}
-              onChange={e => setNewTournamentName(e.target.value)}
-              style={{ flex: 1 }}
-            />
-            <button type="submit" className="btn-primary" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <Plus size={18} /> Crear
-            </button>
-          </form>
-        </div>
-
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-          {tournaments.map(t => (
-            <div key={t.id} className="card-glass flex-between" style={{ padding: '1rem' }}>
-              <div>
-                <h4 style={{ fontWeight: 'bold', fontSize: '1.1rem' }}>{t.name}</h4>
-                <div style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>
-                  Estado: <span style={{ color: 'var(--accent-primary)' }}>{t.status.toUpperCase()}</span>
-                </div>
-              </div>
-              <button 
-                className="btn-primary" 
-                onClick={() => {
-                  selectTournament(t.id);
-                  setView('manage');
-                }}
-                style={{ background: 'transparent', border: '1px solid var(--accent-primary)', color: 'var(--text-primary)', padding: '0.5rem 1rem' }}
-              >
-                <Settings size={18} /> Gestionar
-              </button>
-            </div>
-          ))}
-          {tournaments.length === 0 && <p style={{ color: 'var(--text-secondary)' }}>No tienes torneos creados.</p>}
-        </div>
-      </motion.div>
-    );
-  }
-
-  // DETAIL VIEW: MANAGE TOURNAMENT
+  // MASTER VIEW: MANAGE TOURNAMENT
   return (
     <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="container" style={{ paddingBottom: '5rem' }}>
-      <button 
-        onClick={() => setView('list')} 
-        style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', background: 'none', border: 'none', color: 'var(--text-secondary)', cursor: 'pointer', marginBottom: '1.5rem' }}
-      >
-        <ChevronLeft size={20} /> Volver a Torneos
-      </button>
+
 
       <div className="flex-between" style={{ marginBottom: '1.5rem' }}>
         <div>
@@ -156,7 +90,7 @@ const Admin = () => {
         <button 
           onClick={() => {
             resetTournament();
-            setView('list');
+            setActiveTournamentId(null);
             toast.success('Torneo Eliminado');
           }} 
           className="btn-primary" 
