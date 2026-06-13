@@ -51,7 +51,8 @@ function AppContent() {
           <Route path="/admin" element={<Admin />} />
           
           {/* Main Enrouting */}
-          <Route path="/" element={!activeTournamentId ? <Lobby /> : <Results />} />
+          <Route path="/" element={!activeTournamentId ? <Lobby /> : <Navigate to="/partidos" replace />} />
+          <Route path="/partidos" element={!activeTournamentId ? <Navigate to="/" replace /> : <Results />} />
           <Route path="/clasificacion" element={!activeTournamentId ? <Navigate to="/" replace /> : <Standings />} />
           <Route path="/cuadro" element={!activeTournamentId ? <Navigate to="/" replace /> : <Bracket />} />
           <Route path="/perfiles" element={!activeTournamentId ? <Navigate to="/" replace /> : <Profiles />} />

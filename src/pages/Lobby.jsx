@@ -46,7 +46,7 @@ const Lobby = () => {
                 if (location.pathname === '/tv') {
                   navigate('/tv');
                 } else {
-                  navigate('/');
+                  navigate('/partidos');
                 }
               }}
               className="tournament-card"

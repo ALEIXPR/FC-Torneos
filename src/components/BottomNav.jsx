@@ -5,7 +5,7 @@ import { useTournament } from '../context/TournamentContext';
 import './BottomNav.css';
 
 const BottomNav = () => {
-  const { activeTournamentId } = useTournament();
+  const { activeTournamentId, setActiveTournamentId } = useTournament();
 
   if (!activeTournamentId) {
     // Standalone or Lobby state: Show only Torneos, Ayuda, Admin
@@ -27,10 +27,19 @@ const BottomNav = () => {
     );
   }
 
-  // Inside tournament state: Show all 6 tabs
+  // Inside tournament state: Show Torneos at start, remove Ayuda
   return (
     <nav className="bottom-nav">
-      <NavLink to="/" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`} end>
+      <NavLink 
+        to="/" 
+        className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
+        onClick={() => setActiveTournamentId(null)}
+        end
+      >
+        <Home size={24} />
+        <span>Torneos</span>
+      </NavLink>
+      <NavLink to="/partidos" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
         <Trophy size={24} />
         <span>Partidos</span>
       </NavLink>
@@ -45,10 +54,6 @@ const BottomNav = () => {
       <NavLink to="/perfiles" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
         <Users size={24} />
         <span>Perfiles</span>
-      </NavLink>
-      <NavLink to="/instrucciones" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
-        <HelpCircle size={24} />
-        <span>Ayuda</span>
       </NavLink>
       <NavLink to="/admin" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
         <Settings size={24} />
