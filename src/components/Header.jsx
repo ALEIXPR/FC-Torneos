@@ -3,7 +3,7 @@ import { useTournament } from '../context/TournamentContext';
 import { LogOut } from 'lucide-react';
 
 const Header = ({ title }) => {
-  const { setActiveTournamentId } = useTournament();
+  const { activeTournamentId, setActiveTournamentId } = useTournament();
 
   return (
     <header className="app-header" style={{
@@ -16,21 +16,23 @@ const Header = ({ title }) => {
       alignItems: 'center',
       justifyContent: 'center'
     }}>
-      <button 
-        onClick={() => setActiveTournamentId(null)}
-        style={{
-          position: 'absolute',
-          left: '1.5rem',
-          background: 'transparent',
-          border: 'none',
-          color: 'var(--text-secondary)',
-          cursor: 'pointer',
-          display: 'flex',
-          alignItems: 'center'
-        }}
-      >
-        <LogOut size={20} style={{ transform: 'rotate(180deg)' }} />
-      </button>
+      {activeTournamentId && (
+        <button 
+          onClick={() => setActiveTournamentId(null)}
+          style={{
+            position: 'absolute',
+            left: '1.5rem',
+            background: 'transparent',
+            border: 'none',
+            color: 'var(--text-secondary)',
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center'
+          }}
+        >
+          <LogOut size={20} style={{ transform: 'rotate(180deg)' }} />
+        </button>
+      )}
 
       <h1 className="heading-md" style={{ color: 'var(--text-primary)', margin: 0 }}>
         FC <span style={{ color: 'var(--accent-primary)' }}>SIXPISTOLS</span>
