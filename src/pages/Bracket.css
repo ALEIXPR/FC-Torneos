@@ -1,3 +1,10 @@
+.bracket-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 1rem 0;
+}
+
 .bracket-container {
   display: flex;
   justify-content: center;

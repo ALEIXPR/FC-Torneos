@@ -1,10 +1,17 @@
-.standings-table-container {
+.standings-card {
+  padding: 0;
+  overflow: hidden;
+}
+
+.table-responsive {
+  width: 100%;
   overflow-x: auto;
-  padding: 1rem 0;
+  -webkit-overflow-scrolling: touch;
 }
 
 .standings-table {
   width: 100%;
+  min-width: 600px; /* Forces scroll on mobile */
   border-collapse: collapse;
   text-align: center;
   font-size: 0.85rem;
