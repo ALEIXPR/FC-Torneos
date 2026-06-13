@@ -219,7 +219,7 @@ const Instructions = () => {
                 <span style={{ fontSize: '1.2rem' }}>🔑</span>
                 <div>
                   <span style={{ fontSize: '0.65rem', color: 'rgba(255,255,255,0.4)', textTransform: 'uppercase', letterSpacing: '0.5px', display: 'block' }}>Contraseña de Seguridad</span>
-                  <strong style={{ fontSize: '1rem', color: '#ff4444', letterSpacing: '1px' }}>lider</strong>
+                  <strong style={{ fontSize: '0.9rem', color: '#ff4444', fontWeight: 'bold' }}>Pista: apodo de Aleix10 en Valorant</strong>
                 </div>
               </div>
 
@@ -320,7 +320,7 @@ const Instructions = () => {
               <div className="faq-item">
                 <h4 className="faq-question"><span>🔒</span> ¿Se puede restablecer la aplicación o cambiar la contraseña?</h4>
                 <p className="faq-answer">
-                  La contraseña general de administración está hardcodeada como <code>lider</code> para simplificar el acceso a los administradores locales. El almacenamiento se realiza en el <code>localStorage</code> de tu navegador, por lo que borrar los datos de navegación restablecerá la base de datos a su estado original (solo con el torneo Demo).
+                  La contraseña general de administración está configurada bajo la pista <em>"apodo de Aleix10 en Valorant"</em> para facilitar el acceso a los administradores locales. El almacenamiento se realiza en el <code>localStorage</code> de tu navegador, por lo que borrar los datos de navegación restablecerá la base de datos a su estado original (solo con el torneo Demo).
                 </p>
               </div>
             </div>
