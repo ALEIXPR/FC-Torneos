@@ -14,7 +14,8 @@ import {
   Award, 
   Settings, 
   FileText, 
-  Zap 
+  Zap,
+  Star
 } from 'lucide-react';
 import './Instructions.css';
 
@@ -22,9 +23,9 @@ const Instructions = () => {
   const [activeTab, setActiveTab] = useState('general'); // 'general' | 'players' | 'admin' | 'faq'
 
   const tabContentVariants = {
-    hidden: { opacity: 0, y: 15 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.3 } },
-    exit: { opacity: 0, y: -15, transition: { duration: 0.2 } }
+    hidden: { opacity: 0, y: 12 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.25, ease: 'easeOut' } },
+    exit: { opacity: 0, y: -10, transition: { duration: 0.18, ease: 'easeIn' } }
   };
 
   return (
@@ -34,20 +35,14 @@ const Instructions = () => {
       className="container instructions-page"
     >
       <header className="instructions-header">
-        <motion.div
-          initial={{ scale: 0.8 }}
-          animate={{ scale: 1 }}
-          transition={{ type: 'spring', stiffness: 200 }}
-          style={{ display: 'inline-block', marginBottom: '0.75rem' }}
-        >
-          <BookOpen size={48} color="var(--accent-primary)" style={{ filter: 'drop-shadow(0 0 15px rgba(0, 255, 136, 0.4))' }} />
-        </motion.div>
-        <h2 className="instructions-title">Guía de la Plataforma</h2>
-        <p className="instructions-subtitle">Domina el funcionamiento de los torneos de E-Sports 🎮</p>
+        <h2 className="instructions-title">
+          <BookOpen size={24} color="var(--accent-primary)" style={{ filter: 'drop-shadow(0 0 10px rgba(0, 255, 136, 0.3))' }} />
+          Guía de Uso
+        </h2>
       </header>
 
       {/* Tabs Selector */}
-      <div className="help-tabs">
+      <div className="help-tabs" style={{ marginBottom: '1.25rem' }}>
         <button 
           className={`help-tab-btn ${activeTab === 'general' ? 'active' : ''}`}
           onClick={() => setActiveTab('general')}
@@ -84,11 +79,11 @@ const Instructions = () => {
             animate="visible"
             exit="exit"
           >
-            <div className="help-card help-card-general">
+            <div className="card-glass help-general" style={{ marginBottom: '1.25rem' }}>
               <h3 className="help-card-title" style={{ color: 'var(--accent-primary)' }}>
-                <Trophy size={22} /> Estructura de Torneos
+                <Trophy size={20} /> Estructura de Torneos
               </h3>
-              <p style={{ color: 'var(--text-secondary)', marginBottom: '1.2rem', fontSize: '0.9rem', lineHeight: '1.6' }}>
+              <p style={{ color: 'var(--text-secondary)', marginBottom: '1.2rem', fontSize: '0.88rem', lineHeight: '1.5' }}>
                 FC Sixpistols organiza competiciones rápidas diseñadas para mantener la tensión y la emoción del fútbol virtual. Los torneos se desarrollan en cuatro fases consecutivas:
               </p>
               
@@ -127,14 +122,14 @@ const Instructions = () => {
               </div>
             </div>
 
-            <div className="help-card">
+            <div className="card-glass">
               <h3 className="help-card-title" style={{ color: 'var(--text-primary)' }}>
-                <Star size={20} color="#fbbf24" /> Torneo Demo Integrado
+                <Star size={18} color="#fbbf24" style={{ fill: '#fbbf24' }} /> Torneo Demo Integrado
               </h3>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: '1.6' }}>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '0.88rem', lineHeight: '1.5' }}>
                 La plataforma incluye de manera predeterminada el torneo <strong>"Mundial de Leyendas (Demo)"</strong> en fase final de eliminatorias 🏟️. 
               </p>
-              <ul style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', lineHeight: '1.6', marginTop: '0.75rem', marginLeft: '1.25rem' }}>
+              <ul style={{ color: 'var(--text-secondary)', fontSize: '0.82rem', lineHeight: '1.5', marginTop: '0.75rem', marginLeft: '1.25rem' }}>
                 <li>Este torneo sirve como demostración inmediata de la plataforma para los visitantes.</li>
                 <li><strong>No se puede eliminar</strong>, garantizando que siempre haya datos de ejemplo para explorar.</li>
                 <li>Es completamente editable desde el panel de administración para hacer pruebas rápidas.</li>
@@ -151,11 +146,11 @@ const Instructions = () => {
             animate="visible"
             exit="exit"
           >
-            <div className="help-card help-card-player">
+            <div className="card-glass help-player">
               <h3 className="help-card-title" style={{ color: 'var(--accent-secondary)' }}>
-                <Users size={22} /> Guía del Espectador y Jugadores
+                <Users size={20} /> Guía del Espectador y Jugadores
               </h3>
-              <p style={{ color: 'var(--text-secondary)', marginBottom: '1.2rem', fontSize: '0.9rem', lineHeight: '1.6' }}>
+              <p style={{ color: 'var(--text-secondary)', marginBottom: '1.2rem', fontSize: '0.88rem', lineHeight: '1.5' }}>
                 Explora las diferentes secciones públicas en el menú de navegación inferior para mantenerte al día con el torneo en juego:
               </p>
               
@@ -212,18 +207,18 @@ const Instructions = () => {
             animate="visible"
             exit="exit"
           >
-            <div className="help-card help-card-admin">
+            <div className="card-glass help-admin">
               <h3 className="help-card-title" style={{ color: '#ff4444' }}>
-                <Shield size={22} /> Panel del Administrador (Master Control)
+                <Shield size={20} /> Panel del Administrador (Master Control)
               </h3>
-              <p style={{ color: 'var(--text-secondary)', marginBottom: '1.2rem', fontSize: '0.9rem', lineHeight: '1.6' }}>
+              <p style={{ color: 'var(--text-secondary)', marginBottom: '1.2rem', fontSize: '0.88rem', lineHeight: '1.5' }}>
                 Si eres el organizador, puedes acceder al panel de administración desde la página principal de la app usando la clave maestra de seguridad:
               </p>
               
               <div style={{ background: 'rgba(255, 68, 68, 0.08)', border: '1px solid rgba(255, 68, 68, 0.2)', padding: '0.8rem 1rem', borderRadius: '10px', display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>
                 <span style={{ fontSize: '1.2rem' }}>🔑</span>
                 <div>
-                  <span style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.4)', textTransform: 'uppercase', letterSpacing: '0.5px', display: 'block' }}>Contraseña de Seguridad</span>
+                  <span style={{ fontSize: '0.65rem', color: 'rgba(255,255,255,0.4)', textTransform: 'uppercase', letterSpacing: '0.5px', display: 'block' }}>Contraseña de Seguridad</span>
                   <strong style={{ fontSize: '1rem', color: '#ff4444', letterSpacing: '1px' }}>lider</strong>
                 </div>
               </div>
@@ -283,9 +278,9 @@ const Instructions = () => {
             animate="visible"
             exit="exit"
           >
-            <div className="help-card">
+            <div className="card-glass">
               <h3 className="help-card-title" style={{ color: 'var(--accent-primary)' }}>
-                <HelpCircle size={22} /> Preguntas Frecuentes
+                <HelpCircle size={20} /> Preguntas Frecuentes
               </h3>
               
               <div className="faq-item">
@@ -337,3 +332,4 @@ const Instructions = () => {
 };
 
 export default Instructions;
+

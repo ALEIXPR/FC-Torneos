@@ -6,57 +6,59 @@
   padding-bottom: 5rem;
 }
 
+/* Header */
 .instructions-header {
-  margin-bottom: 2rem;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .instructions-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   font-family: 'Outfit', sans-serif;
-  font-weight: 900;
-  font-size: 2.2rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: 0.5rem;
+  font-weight: 800;
+  font-size: 1.8rem;
+  color: var(--text-primary);
+  margin: 0;
 }
 
-.instructions-subtitle {
-  color: var(--text-secondary);
-  font-size: 0.95rem;
-}
-
+/* Horizontal Scrollable Tabs on Mobile */
 .help-tabs {
   display: flex;
-  justify-content: center;
   gap: 0.5rem;
-  margin-bottom: 2rem;
-  background: rgba(255, 255, 255, 0.03);
-  padding: 6px;
-  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 4px;
+  border-radius: 100px;
   border: 1px solid var(--glass-border);
-  width: fit-content;
-  margin-left: auto;
-  margin-right: auto;
+  overflow-x: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+  max-width: 100%;
+}
+
+.help-tabs::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
 }
 
 .help-tab-btn {
   font-family: 'Outfit', sans-serif;
   font-weight: 700;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   text-transform: uppercase;
-  padding: 0.6rem 1.25rem;
-  border-radius: 999px;
+  letter-spacing: 0.06em;
+  padding: 0.45rem 1.15rem;
+  border-radius: 100px;
   border: none;
   cursor: pointer;
   background: transparent;
   color: var(--text-secondary);
+  white-space: nowrap;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.4rem;
   transition: all 0.25s ease;
 }
 
@@ -67,99 +69,65 @@
 .help-tab-btn.active {
   background: var(--accent-primary);
   color: var(--text-inverse, #050810);
-  box-shadow: 0 0 16px rgba(0, 255, 136, 0.35);
+  box-shadow: 0 0 14px rgba(0, 255, 136, 0.35);
 }
 
-/* Card components */
-.help-card {
-  background: var(--glass-bg);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--glass-border);
-  border-radius: 16px;
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
-  box-shadow: var(--glass-shadow);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.help-card:hover {
-  border-color: rgba(255, 255, 255, 0.12);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-}
-
-.help-card-admin {
-  border-left: 4px solid #ff4444;
-}
-
-.help-card-admin:hover {
-  border-color: #ff4444;
-  box-shadow: 0 10px 30px rgba(255, 68, 68, 0.08);
-}
-
-.help-card-player {
-  border-left: 4px solid var(--accent-secondary);
-}
-
-.help-card-player:hover {
-  border-color: var(--accent-secondary);
-  box-shadow: 0 10px 30px rgba(0, 212, 255, 0.08);
-}
-
-.help-card-general {
+/* Card overrides */
+.card-glass.help-general {
   border-left: 4px solid var(--accent-primary);
 }
-
-.help-card-general:hover {
-  border-color: var(--accent-primary);
-  box-shadow: 0 10px 30px rgba(0, 255, 136, 0.08);
+.card-glass.help-player {
+  border-left: 4px solid var(--accent-secondary);
+}
+.card-glass.help-admin {
+  border-left: 4px solid #ff4444;
 }
 
 .help-card-title {
   display: flex;
   align-items: center;
   gap: 0.6rem;
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   font-weight: 700;
   margin-bottom: 1rem;
 }
 
-/* Step list */
+/* Steps */
 .help-steps {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 1.2rem;
 }
 
 .help-step-item {
   display: flex;
-  gap: 1rem;
+  gap: 0.75rem;
 }
 
 .help-step-num {
-  width: 28px;
-  height: 28px;
-  background: rgba(255, 255, 255, 0.06);
+  width: 26px;
+  height: 26px;
+  background: rgba(255, 255, 255, 0.05);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: 'Outfit', sans-serif;
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   color: var(--accent-primary);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   flex-shrink: 0;
 }
 
 .help-step-num-admin {
   color: #ff4444;
-  border-color: rgba(255, 68, 68, 0.3);
+  border-color: rgba(255, 68, 68, 0.2);
 }
 
 .help-step-num-player {
   color: var(--accent-secondary);
-  border-color: rgba(0, 212, 255, 0.3);
+  border-color: rgba(0, 212, 255, 0.2);
 }
 
 .help-step-content {
@@ -169,63 +137,41 @@
 .help-step-title {
   font-weight: 700;
   font-size: 0.95rem;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.2rem;
   color: var(--text-primary);
 }
 
 .help-step-desc {
   font-size: 0.85rem;
   color: var(--text-secondary);
-  line-height: 1.5;
-}
-
-/* Grid layout for quick reference items */
-.quick-ref-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-}
-
-@media (max-width: 480px) {
-  .quick-ref-grid {
-    grid-template-columns: 1fr;
-  }
-  .help-tabs {
-    flex-direction: column;
-    width: 100%;
-    border-radius: 12px;
-    align-items: stretch;
-  }
-  .help-tab-btn {
-    justify-content: center;
-  }
+  line-height: 1.45;
 }
 
 /* Highlights */
 .badge-highlight {
   display: inline-block;
-  padding: 0.15rem 0.5rem;
-  background: rgba(0, 255, 136, 0.1);
+  padding: 0.15rem 0.4rem;
+  background: rgba(0, 255, 136, 0.08);
   color: var(--accent-primary);
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   border-radius: 4px;
   font-weight: 600;
 }
 
 .badge-admin {
-  background: rgba(255, 68, 68, 0.1);
+  background: rgba(255, 68, 68, 0.08);
   color: #ff4444;
 }
 
 .badge-player {
-  background: rgba(0, 212, 255, 0.1);
+  background: rgba(0, 212, 255, 0.08);
   color: var(--accent-secondary);
 }
 
-/* FAQ style */
+/* FAQ */
 .faq-item {
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  padding: 1.1rem 0;
+  padding: 1rem 0;
 }
 
 .faq-item:last-child {
@@ -234,17 +180,31 @@
 
 .faq-question {
   font-weight: 700;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: var(--text-primary);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
   display: flex;
   align-items: flex-start;
   gap: 0.5rem;
 }
 
 .faq-answer {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   color: var(--text-secondary);
-  line-height: 1.5;
-  padding-left: 1.5rem;
+  line-height: 1.45;
+  padding-left: 1.4rem;
 }
+
+/* Mobile responsive padding overrides */
+@media (max-width: 480px) {
+  .instructions-page {
+    padding: 1rem;
+  }
+  .card-glass {
+    padding: 1.1rem;
+  }
+  .help-step-item {
+    gap: 0.6rem;
+  }
+}
+
